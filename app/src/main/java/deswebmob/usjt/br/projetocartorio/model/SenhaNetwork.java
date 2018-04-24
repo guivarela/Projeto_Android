@@ -117,4 +117,35 @@ public class SenhaNetwork {
         return senhas;
 
     }
+
+    public static String getPrevisaoInicio(String url) throws IOException {
+        String previsao;
+        OkHttpClient client = new OkHttpClient();
+
+        Log.println(Log.DEBUG,"url senhas" , url);
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        Response response = client.newCall(request).execute();
+        previsao = response.body().string();
+
+        return previsao;
+    }
+    public static String getPrevisaoFim(String url) throws IOException {
+        String previsao;
+        OkHttpClient client = new OkHttpClient();
+
+        Log.println(Log.DEBUG,"url senhas" , url);
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        Response response = client.newCall(request).execute();
+        previsao = response.body().string();
+
+        return previsao;
+    }
 }

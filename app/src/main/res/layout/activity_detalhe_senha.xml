@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,33 +11,79 @@
     tools:context="deswebmob.usjt.br.projetocartorio.controller.DetalheSenhaActivity">
 
     <TextView
+        android:id="@+id/lbl_servico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Servico:"/>
+    <TextView
         android:id="@+id/tv_servico1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lbl_servico"/>
 
+    <TextView
+        android:id="@+id/lbl_categoria"
+        android:layout_marginTop="15px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Categoria:"
+        android:layout_below="@id/tv_servico1"/>
     <TextView
         android:id="@+id/tv_categoria"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lbl_categoria"/>
 
+    <TextView
+        android:id="@+id/lbl_senha"
+        android:layout_marginTop="15px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Senha:"
+        android:layout_below="@id/tv_categoria"/>
     <TextView
         android:id="@+id/tv_senha"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="wrap_content"
+        android:text="AA000"
+        android:layout_below="@id/lbl_senha"/>
+    <TextView
+        android:id="@+id/lbl_horaGerada"
+        android:layout_marginTop="15px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_senha"
+        android:text="Hora Gerada:"/>
     <TextView
         android:id="@+id/tv_horaGerada"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lbl_horaGerada"/>
 
+    <TextView
+        android:id="@+id/lbl_inicioAt"
+        android:layout_marginTop="15px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Previsão de Inicio do atendimento:"
+        android:layout_below="@id/tv_horaGerada"/>
     <TextView
         android:id="@+id/tv_previsaoInicio"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lbl_inicioAt"/>
 
+    <TextView
+        android:id="@+id/lbl_fimAt"
+        android:layout_marginTop="15px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Previsão de Final do Atendimento"
+        android:layout_below="@id/tv_previsaoInicio"/>
     <TextView
         android:id="@+id/tv_previsaoFim"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lbl_fimAt"/>
 
-</LinearLayout>
+</RelativeLayout>

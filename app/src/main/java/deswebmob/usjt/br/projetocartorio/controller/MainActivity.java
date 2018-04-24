@@ -26,6 +26,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import deswebmob.usjt.br.projetocartorio.R;
+import deswebmob.usjt.br.projetocartorio.model.Atendimento;
 import deswebmob.usjt.br.projetocartorio.model.Senha;
 import deswebmob.usjt.br.projetocartorio.model.SenhaDb;
 import deswebmob.usjt.br.projetocartorio.model.SenhaNetwork;
@@ -34,8 +35,8 @@ import deswebmob.usjt.br.projetocartorio.model.ServicoNetwork;
 
 public class MainActivity extends AppCompatActivity {
     public static final String SENHAS = "deswebmob.usjt.br.projetocartorio.senhas";
-    public static final String PROJ_HOST = "http://192.168.1.5:8080/arqsw_sdesk_a4_solucao_parcial/";
-    public static final String SALVAR_SENHA_HOST = "http://192.168.1.5:8080/arqsw_sdesk_a4_solucao_parcial/rest/senhas";
+    public static final String PROJ_HOST = "http://169.254.181.176:8080/arqsw_sdesk_a4_solucao_parcial/";
+    public static final String SALVAR_SENHA_HOST = "http://169.254.181.176:8080/arqsw_sdesk_a4_solucao_parcial/rest/senhas";
     private RadioGroup radioGroupCategoria;
     private RadioButton radioCategoria;
     public String senha;
