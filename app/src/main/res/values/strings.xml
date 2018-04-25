@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Sistema de Cartório</string>
+    <string name="servico">Servico</string>
+    <string name="categoria">Categoria</string>
+    <string name="senha">Senha</string>
+    <string name="horaGerada">Hora Gerada:</string>
+    <string name="inicioAt">Previsão do inicio do atendimento</string>
+    <string name="fimAt">Previsão do fim do atendimento</string>
 </resources>

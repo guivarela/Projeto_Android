@@ -14,7 +14,7 @@
         android:id="@+id/lbl_servico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Servico:"/>
+        android:text="@string/servico"/>
     <TextView
         android:id="@+id/tv_servico1"
         android:layout_width="wrap_content"
@@ -23,10 +23,10 @@
 
     <TextView
         android:id="@+id/lbl_categoria"
-        android:layout_marginTop="15px"
+        android:layout_marginTop="20px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Categoria:"
+        android:text="@string/categoria"
         android:layout_below="@id/tv_servico1"/>
     <TextView
         android:id="@+id/tv_categoria"
@@ -36,24 +36,23 @@
 
     <TextView
         android:id="@+id/lbl_senha"
-        android:layout_marginTop="15px"
+        android:layout_marginTop="20px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Senha:"
+        android:text="@string/senha"
         android:layout_below="@id/tv_categoria"/>
     <TextView
         android:id="@+id/tv_senha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AA000"
         android:layout_below="@id/lbl_senha"/>
     <TextView
         android:id="@+id/lbl_horaGerada"
-        android:layout_marginTop="15px"
+        android:layout_marginTop="20px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_senha"
-        android:text="Hora Gerada:"/>
+        android:text="@string/horaGerada"/>
     <TextView
         android:id="@+id/tv_horaGerada"
         android:layout_width="wrap_content"
@@ -62,10 +61,10 @@
 
     <TextView
         android:id="@+id/lbl_inicioAt"
-        android:layout_marginTop="15px"
+        android:layout_marginTop="20px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Previsão de Inicio do atendimento:"
+        android:text="@string/inicioAt"
         android:layout_below="@id/tv_horaGerada"/>
     <TextView
         android:id="@+id/tv_previsaoInicio"
@@ -75,15 +74,25 @@
 
     <TextView
         android:id="@+id/lbl_fimAt"
-        android:layout_marginTop="15px"
+        android:layout_marginTop="20px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Previsão de Final do Atendimento"
+        android:text="@string/fimAt"
         android:layout_below="@id/tv_previsaoInicio"/>
     <TextView
         android:id="@+id/tv_previsaoFim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/lbl_fimAt"/>
+
+    <Button
+        android:id="@+id/bt_irPainel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50px"
+        android:text="Ir para painel"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/white"
+        android:layout_below="@id/tv_previsaoFim"/>
 
 </RelativeLayout>
