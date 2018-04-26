@@ -78,7 +78,12 @@ public class ItemPainelAdapter extends BaseAdapter{
         new DownloadPrevisaoInicio().execute(PROJ_HOST + "rest/previsaoInicio/"+ item.getSubservico().getId());
         return view;
     }
-
+//    private DownloadPrevisaoInicio(String url){
+//        String aa = "";
+//        aa = SenhaNetwork.getPrevisaoInicio(url);
+//        return viewHolder.getPrevisaoAt().setText(aa);
+//
+//    }
 
     private class DownloadPrevisaoInicio extends AsyncTask<String, Void, String> {
 
