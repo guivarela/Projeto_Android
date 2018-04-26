@@ -40,22 +40,22 @@ public class PainelActivity extends AppCompatActivity {
 
     }
 
-    private class DownloadPainel extends AsyncTask<String, Void, ArrayList<ItemPainel>> {
+    private class DownloadPainel extends AsyncTask<String, Void, ItemPainelAdapter> {
 
         @Override
-        protected ArrayList<ItemPainel> doInBackground(String... strings) {
+        protected ItemPainelAdapter doInBackground(String... strings) {
             ArrayList<ItemPainel> ip = new ArrayList<>();
             try {
                 ip = SenhaNetwork.buscarPainel(strings[0]);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return ip;
+            ItemPainelAdapter adapter = new ItemPainelAdapter(contexto, ip);
+            return adapter;
         }
 
-        protected void onPostExecute(ArrayList<ItemPainel> ip){
+        protected void onPostExecute(ItemPainelAdapter adapter){
             listView = (ListView) findViewById(R.id.listaPainel);
-            ItemPainelAdapter adapter = new ItemPainelAdapter(contexto, ip);
             listView.setAdapter(adapter);
         }
     }

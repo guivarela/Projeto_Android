@@ -68,14 +68,14 @@ public class ItemPainelAdapter extends BaseAdapter{
         }
 
         ItemPainel item = ip.get(position);
-        new DownloadPrevisaoInicio().execute(PROJ_HOST + "rest/previsaoInicio/"+ item.getSubservico().getId());
-        System.out.println(item.getSubservico().getId());
+        System.out.println(item.toString());
         viewHolder = (ViewHolder) view.getTag();
 
         viewHolder.getStatus().setText(item.getStatusSenha());
         viewHolder.getCategoria().setText(item.getCategoria()+"/");
         viewHolder.getSenha().setText(item.getSenha());
         viewHolder.getHoraGerada().setText(item.getHoraGerada());
+        new DownloadPrevisaoInicio().execute(PROJ_HOST + "rest/previsaoInicio/"+ item.getSubservico().getId());
         return view;
     }
 
