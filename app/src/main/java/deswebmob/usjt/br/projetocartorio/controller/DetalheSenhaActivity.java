@@ -1,13 +1,13 @@
 package deswebmob.usjt.br.projetocartorio.controller;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 
@@ -18,6 +18,8 @@ import deswebmob.usjt.br.projetocartorio.model.SenhaNetwork;
 
 public class DetalheSenhaActivity extends AppCompatActivity {
     private TextView tvServico, tvCategoria, tvSenha, tvHoraGerada, tvPrevisaoInicio, tvPrevisaoFim;
+    private Button btIrPainel;
+    private Context contexto;
     public static final String PREVISAO_HOST = "http://169.254.181.176:8080/arqsw_sdesk_a4_solucao_parcial/rest/previsao";
 
     @Override
@@ -26,6 +28,7 @@ public class DetalheSenhaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detalhe_senha);
         Intent intent = getIntent();
         Senha senha = (Senha)intent.getSerializableExtra("senha");
+        contexto = this;
 
         new DownloadPrevisaoInicio().execute(PREVISAO_HOST + "Inicio/"+senha.getSubservico().getId());
         new DownloadPrevisaoFim().execute(PREVISAO_HOST + "Fim/"+senha.getSubservico().getId());
@@ -42,6 +45,14 @@ public class DetalheSenhaActivity extends AppCompatActivity {
         tvHoraGerada.setText(senha.getHoraGerada());
         tvPrevisaoInicio.setText("00:00:00");
         tvPrevisaoFim.setText("00:00:00");
+
+        btIrPainel = (Button) findViewById(R.id.bt_irPainel);
+        btIrPainel.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(contexto, PainelActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

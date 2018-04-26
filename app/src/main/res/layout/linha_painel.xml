@@ -7,27 +7,24 @@
     tools:context=".controller.PainelActivity">
 
     <LinearLayout
-        android:id="@+id/lt_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:padding="5dp"
-        android:background="@color/colorPrimaryDark">
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/vSenha"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="Senha"
-            android:textColor="@color/white"
+            android:text="RF001"
             android:textSize="20dp" />
 
         <LinearLayout
             android:id="@+id/ltCateg"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/vSenha"
             android:gravity="center_vertical"
             android:orientation="vertical">
@@ -36,79 +33,48 @@
                 android:id="@+id/vCateg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Categoria/"
-                android:textColor="@color/white"
+                android:text="Normal"
                 android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/vStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Status"
-                android:textColor="@color/white"
+                android:text="Aberto"
                 android:textSize="10dp" />
 
         </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/ltCateg"
-            android:gravity="right"
+            android:gravity="end"
             android:orientation="horizontal"
-            android:paddingBottom="5dp">
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/vChegada"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:text="Hora Gerada"
-                android:textColor="@color/white"
-                android:textSize="10dp" />
+                android:text="10:31:20" />
 
             <TextView
                 android:id="@+id/vTempoMedio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/vChegada"
-                android:padding="4dp"
-                android:text="Tempo Inicio"
-                android:textAlignment="gravity"
-                android:textColor="@color/white"
-                android:textSize="10dp" />
-
-            <TextView
-                android:id="@+id/vAtendimento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/vTempoMedio"
-                android:layout_toRightOf="@id/vChegada"
-                android:padding="4dp"
-                android:text="Atendimento"
-                android:textAlignment="gravity"
-                android:textColor="@color/white"
-                android:textSize="10dp" />
+                android:layout_marginLeft="10dp"
+                android:text="00:25:00" />
 
             <TextView
                 android:id="@+id/vAguard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/vTempoMedio"
-                android:padding="4dp"
-                android:text="Aguardando a"
-                android:textColor="@color/white"
-                android:textSize="10dp" />
-        </RelativeLayout>
+                android:layout_below="@+id/vChegada"
+                android:layout_marginLeft="10dp"
+                android:text="00:00:00" />
+        </LinearLayout>
     </LinearLayout>
-
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listaPainel"
-        android:fastScrollEnabled="true"
-        android:layout_below="@id/lt_header"/>
 
 </RelativeLayout>

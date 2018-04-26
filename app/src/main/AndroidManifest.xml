@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".controller.DetalheSenhaActivity" />
-        <activity android:name=".controller.Painel"></activity>
+        <activity android:name=".controller.PainelActivity"></activity>
     </application>
 
 </manifest>
