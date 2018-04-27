@@ -22,10 +22,12 @@ public class ItemPainelAdapter extends BaseAdapter{
     public static final String PROJ_HOST = "http://169.254.181.176:8080/arqsw_sdesk_a4_solucao_parcial/";
     Context contexto;
     ArrayList<ItemPainel> ip;
+    ArrayList<Tempo> tempos;
 
-    public ItemPainelAdapter(Context contexto, ArrayList<ItemPainel> ip) {
+    public ItemPainelAdapter(Context contexto, ArrayList<ItemPainel> ip, ArrayList<Tempo> tempos) {
         this.ip = ip;
         this.contexto = contexto;
+        this.tempos = tempos;
 
     }
     @Override
@@ -67,15 +69,20 @@ public class ItemPainelAdapter extends BaseAdapter{
             view.setTag(viewHolder);
         }
 
+
         ItemPainel item = ip.get(position);
-        System.out.println(item.toString());
+        for(Tempo t:tempos){
+            if (item.getSubservico().getId() == t.getSubservico().getId()){
+                item.setTempoMedio(t.getTempoMedio());
+            }
+        }
         viewHolder = (ViewHolder) view.getTag();
 
         viewHolder.getStatus().setText(item.getStatusSenha());
         viewHolder.getCategoria().setText(item.getCategoria()+"/");
         viewHolder.getSenha().setText(item.getSenha());
         viewHolder.getHoraGerada().setText(item.getHoraGerada());
-        new DownloadPrevisaoInicio().execute(PROJ_HOST + "rest/previsaoInicio/"+ item.getSubservico().getId());
+        viewHolder.getPrevisaoAt().setText(item.getTempoMedio());
         return view;
     }
 //    private DownloadPrevisaoInicio(String url){
@@ -84,23 +91,4 @@ public class ItemPainelAdapter extends BaseAdapter{
 //        return viewHolder.getPrevisaoAt().setText(aa);
 //
 //    }
-
-    private class DownloadPrevisaoInicio extends AsyncTask<String, Void, String> {
-
-        String aa = "";
-        ViewHolder viewHolder = new ViewHolder();
-        @Override
-        protected String doInBackground(String... strings) {
-            try {
-                aa = SenhaNetwork.getPrevisaoInicio(strings[0]);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return aa;
-        }
-
-        protected void onPostExecute(String aa){
-            viewHolder.getPrevisaoAt().setText(aa);
-        }
-    }
 }

@@ -123,6 +123,42 @@ public class SenhaNetwork {
 
     }
 
+    public static ArrayList<Tempo> getPrevisaoInicioGeral(String url) throws IOException {
+        ArrayList<Tempo> tempos = new ArrayList<>();
+        OkHttpClient client = new OkHttpClient();
+
+        Log.println(Log.DEBUG,"url painel" , url);
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        Response response = client.newCall(request).execute();
+        String json = response.body().string();
+
+        Log.println(Log.DEBUG,"json senhas" , json);
+
+        try {
+            JSONArray lista = new JSONArray(json);
+            for (int i = 0; i < lista.length(); i++) {
+                JSONObject item = (JSONObject) lista.get(i);
+                Tempo t = new Tempo();
+                t.setId(item.getInt("id"));
+                t.setTempoMedio(item.getString("tempoMedio"));
+                JSONObject subservico = item.getJSONObject("subservico");
+                JSONObject servico = subservico.getJSONObject("servico");
+                Servico serv = new Servico(servico.getInt("id"), servico.getString("nomeServico"));
+                Subservico subserv = new Subservico(subservico.getInt("id"), subservico.getString("nomeSubservico"), serv);
+                t.setSubservico(subserv);
+                tempos.add(t);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            throw new IOException(e);
+        }
+        return tempos;
+    }
+
     public static String getPrevisaoInicio(String url) throws IOException {
         String previsao;
         OkHttpClient client = new OkHttpClient();

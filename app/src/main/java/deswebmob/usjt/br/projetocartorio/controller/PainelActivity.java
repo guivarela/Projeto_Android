@@ -16,9 +16,11 @@ import deswebmob.usjt.br.projetocartorio.model.ItemPainelAdapter;
 import deswebmob.usjt.br.projetocartorio.model.Senha;
 import deswebmob.usjt.br.projetocartorio.model.SenhaNetwork;
 import deswebmob.usjt.br.projetocartorio.model.ItemPainel;
+import deswebmob.usjt.br.projetocartorio.model.Tempo;
 
 public class PainelActivity extends AppCompatActivity {
     private TextView tvStatus, tvCategoria, tvSenha, tvHoraGerada, tvPrevisaoInicio, tvAguandando;
+    private ArrayList<Tempo> tempos;
     public static final String PAINEL_HOST = "http://169.254.181.176:8080/arqsw_sdesk_a4_solucao_parcial/rest/painel";
     ListView listView;
     Context contexto;
@@ -27,7 +29,8 @@ public class PainelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_painel);
-
+        Bundle args = getIntent().getBundleExtra("tempos");
+        tempos = (ArrayList<Tempo>) args.getSerializable("array");
         tvStatus = (TextView) findViewById(R.id.vStatus);
         tvCategoria = (TextView) findViewById(R.id.vCateg);
         tvSenha = (TextView) findViewById(R.id.vSenha);
@@ -50,7 +53,7 @@ public class PainelActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            ItemPainelAdapter adapter = new ItemPainelAdapter(contexto, ip);
+            ItemPainelAdapter adapter = new ItemPainelAdapter(contexto, ip, tempos);
             return adapter;
         }
 

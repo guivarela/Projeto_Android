@@ -10,17 +10,24 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
 
 import deswebmob.usjt.br.projetocartorio.R;
 import deswebmob.usjt.br.projetocartorio.model.Atendimento;
+import deswebmob.usjt.br.projetocartorio.model.ItemPainelAdapter;
 import deswebmob.usjt.br.projetocartorio.model.Senha;
 import deswebmob.usjt.br.projetocartorio.model.SenhaNetwork;
+import deswebmob.usjt.br.projetocartorio.model.Tempo;
+import deswebmob.usjt.br.projetocartorio.model.ViewHolder;
 
 public class DetalheSenhaActivity extends AppCompatActivity {
     private TextView tvServico, tvCategoria, tvSenha, tvHoraGerada, tvPrevisaoInicio, tvPrevisaoFim;
     private Button btIrPainel;
     private Context contexto;
     public static final String PREVISAO_HOST = "http://169.254.181.176:8080/arqsw_sdesk_a4_solucao_parcial/rest/previsao";
+    public static final String PROJ_HOST = "http://169.254.181.176:8080/arqsw_sdesk_a4_solucao_parcial/rest/previsaoInicio";
+    ArrayList<Tempo> tps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,7 @@ public class DetalheSenhaActivity extends AppCompatActivity {
 
         new DownloadPrevisaoInicio().execute(PREVISAO_HOST + "Inicio/"+senha.getSubservico().getId());
         new DownloadPrevisaoFim().execute(PREVISAO_HOST + "Fim/"+senha.getSubservico().getId());
+        new DownloadPrevisaoInicioGeral().execute(PROJ_HOST);
         tvServico = (TextView) findViewById(R.id.tv_servico1);
         tvCategoria = (TextView) findViewById(R.id.tv_categoria);
         tvSenha = (TextView) findViewById(R.id.tv_senha);
@@ -50,6 +58,9 @@ public class DetalheSenhaActivity extends AppCompatActivity {
         btIrPainel.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent intent = new Intent(contexto, PainelActivity.class);
+                Bundle args = new Bundle();
+                args.putSerializable("array", (Serializable)tps);
+                intent.putExtra("tempos", args);
                 startActivity(intent);
             }
         });
@@ -90,6 +101,25 @@ public class DetalheSenhaActivity extends AppCompatActivity {
 
         protected void onPostExecute(Atendimento atendimento){
             tvPrevisaoFim.setText(atendimento.getpFim());
+        }
+    }
+
+    private class DownloadPrevisaoInicioGeral extends AsyncTask<String, Void, ArrayList<Tempo>> {
+
+        ArrayList<Tempo> tempos = new ArrayList<>();
+        ViewHolder viewHolder = new ViewHolder();
+        @Override
+        protected ArrayList<Tempo> doInBackground(String... strings) {
+            try {
+                tempos = SenhaNetwork.getPrevisaoInicioGeral(strings[0]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return tempos;
+        }
+
+        protected void onPostExecute(ArrayList<Tempo> tempos){
+            tps = tempos;
         }
     }
 }
